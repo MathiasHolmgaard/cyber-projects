@@ -1,6 +1,8 @@
 import hashlib
 import httpx
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, SecretStr
 from pydantic_settings import BaseSettings
 from zxcvbn import zxcvbn
@@ -16,6 +18,13 @@ class Settings(BaseSettings):
 
 settings = Settings()
 app = FastAPI(title="Password Strength Analyzer (NIST SP 800-63b Compliant)")
+
+# Mount the static directory to serve CSS and JS
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+async def serve_frontend():
+    return FileResponse("static/index.html")
 
 # Argon2id hasher configuration
 # Recommended by OWASP and NIST for password storage
