@@ -1,10 +1,10 @@
-# Password Strength Analyzer (NIST SP 800-63b Compliant)
+# Password Strength Analyzer (NIST SP 800-63-4 Compliant)
 
-En serverløs mikrotjeneste i Python (FastAPI) der fungerer som en Password Strength Analyzer baseret på moderne NIST SP 800-63b retningslinjer, med HIBP k-Anonymity integration samt Argon2id hashing demo.
+En serverløs mikrotjeneste i Python (FastAPI) der fungerer som en Password Strength Analyzer baseret på moderne NIST SP 800-63-4 retningslinjer, med HIBP k-Anonymity integration samt Argon2id hashing demo.
 
 ## Funktioner
 
-* **NIST SP 800-63b Validering**: Tjekker minimumslængde (8 tegn) og forbyder passwords der findes i datalæk.
+* **NIST SP 800-63-4 Validering**: Tjekker minimumslængde (8 tegn) og forbyder passwords der findes i datalæk.
 * **Entropi og Kompleksitet**: Anvender `zxcvbn` til at evaluere entropi og advare mod almindelige passwords (ordbogsord, navne, mønstre), uden at kræve arbitrære specialtegn.
 * **Have I Been Pwned (k-Anonymity)**: Tjekker sikkert mod HIBP databasen ved kun at sende de første 5 tegn af SHA-1 hashen.
 * **Sikker Demonstrationshashing**: Viser hvordan et password hashes sikkert med Argon2id ifølge OWASP standarderne.

@@ -17,7 +17,7 @@ class Settings(BaseSettings):
         env_file = ".env"
 
 settings = Settings()
-app = FastAPI(title="Password Strength Analyzer (NIST SP 800-63b Compliant)")
+app = FastAPI(title="Password Strength Analyzer (NIST SP 800-63-4 Compliant)")
 
 # Mount the static directory to serve CSS and JS
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -100,14 +100,14 @@ async def analyze_password(req: PasswordRequest):
     # HIBP check using k-Anonymity
     pwned_count = await check_hibp(pwd)
     
-    # NIST SP 800-63b rules:
+    # NIST SP 800-63-4 rules:
     # - Length minimum 8.
     # - Must not be found in data breaches (commonly used/pwned).
     is_valid = True
     
     if length < 8:
         is_valid = False
-        suggestions.append("Password must be at least 8 characters long (NIST SP 800-63b).")
+        suggestions.append("Password must be at least 8 characters long (NIST SP 800-63-4).")
         
     if pwned_count > 0:
         is_valid = False
