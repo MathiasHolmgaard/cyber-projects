@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header>
+            <h1>Password <span class="highlight">Analyzer</span></h1>
+            <p>NIST SP 800-63b Compliant</p>
+        </header>
+
+        <div class="card">
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="Enter a password to analyze..." autocomplete="new-password">
+                <button id="toggle-visibility" type="button" aria-label="Toggle visibility">
+                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+            </div>
+            
+            <div class="strength-meter-container">
+                <div class="strength-meter" id="strength-meter"></div>
+            </div>
+            <div class="verdict" id="verdict">Start typing...</div>
+            
+            <div id="results" class="results-grid hidden">
+                <div class="result-box" id="box-length">
+                    <div class="box-label">Length</div>
+                    <div class="box-value" id="val-length">0</div>
+                </div>
+                <div class="result-box" id="box-entropy">
+                    <div class="box-label">Entropy Score</div>
+                    <div class="box-value" id="val-entropy">0/4</div>
+                </div>
+                <div class="result-box" id="box-pwned" title="Have I Been Pwned check">
+                    <div class="box-label">Data Breaches</div>
+                    <div class="box-value" id="val-pwned">Safe</div>
+                </div>
+                <div class="result-box" id="box-guesses">
+                    <div class="box-label">Est. Guesses</div>
+                    <div class="box-value" id="val-guesses">0</div>
+                </div>
+            </div>
+
+            <div id="feedback-section" class="feedback-section hidden">
+                <div id="warning-msg" class="warning-text"></div>
+                <ul id="suggestions-list" class="suggestions-list"></ul>
+            </div>
+        </div>
+        
+        <div class="card secondary-card hidden" id="hash-card">
+            <h3>Secure Argon2id Hash</h3>
+            <div class="hash-box">
+                <code id="hash-output">Generating...</code>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
