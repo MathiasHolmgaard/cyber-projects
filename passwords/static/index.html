@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="background-animation"></div>
     <div class="container">
@@ -17,17 +19,23 @@
 
         <div class="card">
             <div class="input-group">
-                <input type="password" id="password-input" placeholder="Enter a password to analyze..." autocomplete="new-password">
+                <input type="password" id="password-input" placeholder="Enter a password to analyze..."
+                    autocomplete="new-password">
                 <button id="toggle-visibility" type="button" aria-label="Toggle visibility">
-                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
                 </button>
             </div>
-            
+
             <div class="strength-meter-container">
                 <div class="strength-meter" id="strength-meter"></div>
             </div>
             <div class="verdict" id="verdict">Start typing...</div>
-            
+
             <div id="results" class="results-grid hidden">
                 <div class="result-box" id="box-length">
                     <div class="box-label">Length</div>
@@ -52,7 +60,7 @@
                 <ul id="suggestions-list" class="suggestions-list"></ul>
             </div>
         </div>
-        
+
         <div class="card secondary-card hidden" id="hash-card">
             <h3>Secure Argon2id Hash</h3>
             <div class="hash-box">
@@ -60,8 +68,22 @@
             </div>
         </div>
 
+        <div class="info-card">
+            <h3>🛡️ Hvorfor er det sikkert at indtaste?</h3>
+            <ul>
+                <li><strong>Ingen logs:</strong> Denne tjeneste gemmer eller logger <em>aldrig</em> dit password. Alt
+                    forsvinder, når du lukker siden.</li>
+                <li><strong>k-Anonymity (HIBP):</strong> Dit password sendes <em>ikke</em> til databaser for at tjekke
+                    for læk. Vi hasher det lokalt, og sender kun de <strong>5 første tegn</strong> af hashen. Databasen
+                    returnerer derefter alle læk, der starter med disse 5 tegn, hvorefter vi filtrerer resten her.</li>
+                <li><strong>Lokal Kørsel:</strong> Tjenesten kører serverløst og transparent direkte fra din egen
+                    maskine.</li>
+            </ul>
+        </div>
+
     </div>
 
     <script src="/static/app.js"></script>
 </body>
+
 </html>

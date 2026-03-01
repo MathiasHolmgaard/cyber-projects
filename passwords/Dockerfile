@@ -20,6 +20,7 @@ USER appuser
 
 # Copy application files
 COPY main.py .
+COPY static ./static
 
 EXPOSE 8000
 
