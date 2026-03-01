@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  analyzer:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Optional API key for HIBP (if needed for rate limits/premium)
+      - HIBP_API_KEY=${HIBP_API_KEY:-}
+    security_opt:
+      - no-new-privileges:true
+    # Best practice is to run containers with read-only root filesystems when possible
+    # We set /tmp writable for any temporary operations uvicorn might do
+    read_only: true
+    tmpfs:
+      - /tmp
